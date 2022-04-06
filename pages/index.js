@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 import Carousel from "../components/carousel";
+import Recipes from "../components/recipes";
 import recipes from '../recipes.json';
 import css from '../styles/Home.module.css';
 
@@ -25,7 +26,8 @@ function HomePage() {
   return (
     <>
       <div className={css.container}>
-        <Carousel images={images} />
+        {/* <Carousel images={images} /> */}
+        <Recipes recipes={recipes} />
       </div>
     </>
   )

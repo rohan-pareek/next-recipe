@@ -1,6 +1,6 @@
 .header {
   width: 100%;
-  padding: 20px;
+  padding: 20px 0;
   background-color: #f57c00;
 }
 
@@ -37,6 +37,10 @@
   transition: all 0.4s;
 }
 
+.active-link {
+  border-bottom: 4px solid #444;
+}
+
 .search {
   color: #fff;
 }
@@ -53,4 +57,10 @@
   height: 1.5rem;
   color: #fff;
   margin-top: 0.25rem;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 90%;
+  }
 }

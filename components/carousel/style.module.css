@@ -46,3 +46,9 @@
 .active-link {
   background-color: #bdbdbd !important;
 }
+
+@media screen and (max-width: 768px) {
+  .carousel {
+    display: none;
+  }
+}

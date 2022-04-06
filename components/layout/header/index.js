@@ -1,8 +1,12 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import SearchIcon from "../../ui/icons/search";
 import css from './style.module.css';
 
 function Header() {
+
+    const { asPath } = useRouter();
+
     return (
         <header className={css.header}>
             <div className={css.container}>
@@ -14,13 +18,24 @@ function Header() {
                 <nav>
                     <ul>
                         <li>
+                            <Link href="/">
+                                <a className={`${asPath === '/' ? css['active-link'] : ''}`}>
+                                    Featured Recipes
+                                </a>
+                            </Link>
+                        </li>
+                        <li>
                             <Link href="/recipes">
-                                Browse All Recipes
+                                <a className={`${asPath === '/recipes' ? css['active-link'] : ''}`}>
+                                    Browse All Recipes
+                                </a>
                             </Link>
                         </li>
                         <li>
                             <Link href="/recipe/random">
-                                Random Recipe
+                                <a className={`${asPath === '/recipe/random' ? css['active-link'] : ''}`}>
+                                    Random Recipe
+                                </a>
                             </Link>
                         </li>
                     </ul>
