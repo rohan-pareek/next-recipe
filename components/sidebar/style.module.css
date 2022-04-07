@@ -1,0 +1,32 @@
+.backdrop {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.content {
+  width: 90%;
+  max-width: 20rem;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: #fff;
+  padding: 20px;
+  animation: slide 0.2s linear;
+  cursor: auto;
+}
+
+@keyframes slide {
+  from {
+    width: 0;
+  }
+  to {
+    width: 20rem;
+  }
+}

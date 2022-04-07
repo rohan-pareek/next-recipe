@@ -7,10 +7,10 @@ function RecipeCard({ recipe }) {
     return (
         <div className={css.card}>
             <div className={css.thumbnail}>
-                <img src={recipe.image} alt={recipe.tiltle} />
+                <img src={recipe.image} alt={recipe.title} />
             </div>
             <div className={css.content}>
-                <div className={css.title}>{recipe.title}</div>
+                <div className={css.title} title={recipe.title}>{recipe.title}</div>
                 <div className={css['view-recipe']}>
                     <Link href={`/recipe/${recipe.id}`}>
                         <a>

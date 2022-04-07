@@ -59,8 +59,70 @@
   margin-top: 0.25rem;
 }
 
+.menu {
+  display: none;
+}
+
+.menu button {
+  background-color: transparent;
+  border: transparent;
+  cursor: pointer;
+  color: #fff;
+}
+
+.menu svg {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.menu nav {
+  display: none;
+  width: 100%;
+}
+
+.menu nav ul {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.menu nav ul li a {
+  padding: 8px 10px;
+  color: #000;
+  background-color: #efefef;
+  display: block;
+  margin: 10px 0;
+}
+
+.menu nav ul li a:hover {
+  color: #999;
+}
+
+.menu .active-link {
+  background-color: #f57c00;
+  color: #fff;
+}
+
+.menu .logo {
+  color: #f57c00;
+  margin-bottom: 20px;
+}
+
 @media screen and (max-width: 768px) {
   .container {
     width: 90%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .menu {
+    display: inline-block;
+  }
+  .header nav {
+    display: none;
+  }
+  .menu nav {
+    display: block;
   }
 }

@@ -1,6 +1,12 @@
+import Recipes from "../../components/recipes";
+import recipes from '../../recipes.json';
+import css from '../../styles/style.module.css';
+
 function AllRecipesPage() {
     return (
-        <h1>All Recipes</h1>
+        <div className={css.container}>
+            <Recipes recipes={recipes} />
+        </div>
     )
 }
 

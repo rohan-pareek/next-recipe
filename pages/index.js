@@ -4,7 +4,7 @@ import { useState } from "react";
 import Carousel from "../components/carousel";
 import Recipes from "../components/recipes";
 import recipes from '../recipes.json';
-import css from '../styles/Home.module.css';
+import css from '../styles/style.module.css';
 
 function HomePage() {
 
