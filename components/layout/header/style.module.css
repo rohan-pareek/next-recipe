@@ -109,6 +109,35 @@
   margin-bottom: 20px;
 }
 
+.control {
+  width: 100%;
+}
+
+.control label {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.control input {
+  width: 100%;
+  border: 1px solid #f57c00;
+  padding-left: 8px;
+  margin-top: 5px;
+  height: 40px;
+  color: #444;
+  font-size: 16px;
+}
+
+.form button {
+  background-color: #f57c00;
+  border: 1px solid #ffe0b2;
+  color: #fff;
+  padding: 8px 10px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
 @media screen and (max-width: 768px) {
   .container {
     width: 90%;

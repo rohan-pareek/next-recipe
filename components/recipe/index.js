@@ -3,6 +3,7 @@ import ChevronRightIcon from '../ui/icons/chevron-right';
 import BagdeCheckIcon from '../ui/icons/badge-check';
 import ExclamationCircleIcon from '../ui/icons/exclamation-circle';
 import Link from 'next/link';
+import UsersIcon from '../ui/icons/users';
 
 function Recipe({ recipe }) {
     return (
@@ -20,14 +21,16 @@ function Recipe({ recipe }) {
                 <div className={css['view-source']}>
                     <Link href={recipe.spoonacularSourceUrl}>
                         <a target="_blank">
-                            Visit Source
+                            Visit Source Recipe
                         </a>
                     </Link>
                 </div>
             </div>
             <div className={css['recipe-content']}>
-                {/* <h1>{recipe.title}</h1> */}
                 <p dangerouslySetInnerHTML={{ __html: recipe.summary }}></p>
+                <p>
+                    <span className={css.icon}><UsersIcon /></span>Servings: {recipe.servings}
+                </p>
                 <div className={css['recipe-checks']}>
                     <div>
                         {recipe.vegan

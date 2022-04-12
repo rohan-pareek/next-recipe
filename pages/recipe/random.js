@@ -1,14 +1,39 @@
-import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { useState } from "react";
+
 import Recipe from "../../components/recipe";
-import recipe from '../../recipe.json';
+import request from '../../components/api';
+import LoaderIcon from "../../components/ui/icons/loader";
+import css from './style.module.css';
 
 function RandomRecipePage() {
 
-    const { query } = useRouter();
-    const recipeId = query.recipeId;
+    const [recipe, setRecipe] = useState();
+    const [loading, setLoading] = useState(false);
+
+    const fetchRecipe = async () => {
+        setLoading(true);
+        const url = `/random/?number=1`
+        const data = await request(url);
+        if (!data.error) {
+            setRecipe(data.recipes[0]);
+        }
+        setLoading(false);
+    }
+
+    useEffect(() => {
+        fetchRecipe();
+    }, [])
 
     return (
-        <Recipe recipe={recipe} />
+        <>
+            {recipe
+                && <Recipe recipe={recipe} />
+            }
+            {loading
+                && <div className={css.loader}><span className={css.icon}><LoaderIcon /></span></div>
+            }
+        </>
     )
 
 }

@@ -1,33 +1,48 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
-import Carousel from "../components/carousel";
 import Recipes from "../components/recipes";
-import recipes from '../recipes.json';
 import css from '../styles/style.module.css';
+import request from '../components/api';
+import LoaderIcon from "../components/ui/icons/loader";
 
 function HomePage() {
 
-  const [images, setImages] = useState([]);
+  const [recipes, setRecipes] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const fetchRecipes = async () => {
+    setLoading(true);
+    const url = `/random/?number=20`
+    const data = await request(url);
+    if (!data.error) {
+      const recipeList = modifyRecipes(data.recipes);
+      setRecipes(recipeList);
+    }
+    setLoading(false);
+  }
+
+  const modifyRecipes = (recipeList) => {
+    return recipeList.map(recipe => {
+      return {
+        id: recipe.id,
+        title: recipe.title,
+        image: recipe.image
+      }
+    })
+  }
 
   useEffect(() => {
-
-    const mappedImages = recipes.map(recipe => {
-      return {
-        title: recipe.title,
-        src: recipe.image
-      }
-    });
-
-    setImages(mappedImages)
-
-  }, []);
+    fetchRecipes();
+  }, [])
 
   return (
     <>
       <div className={css.container}>
-        {/* <Carousel images={images} /> */}
-        <Recipes recipes={recipes} />
+        {recipes && recipes.length > 0 && <Recipes recipes={recipes} />}
+        {loading
+          && <div className={css.loader}><span className={css.icon}><LoaderIcon /></span></div>
+        }
       </div>
     </>
   )

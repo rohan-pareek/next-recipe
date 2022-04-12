@@ -6,14 +6,20 @@ import SearchIcon from "../../ui/icons/search";
 import MenuIcon from "../../ui/icons/menu";
 import css from './style.module.css';
 import Sidebar from "../../sidebar";
+import Modal from "../../modal";
 
 function Header() {
 
     const { asPath } = useRouter();
     const [showSidebar, setShowSidebar] = useState(false);
+    const [showModal, setShowModal] = useState(false);
 
     const closeSidebar = () => {
         setShowSidebar(false);
+    }
+
+    const closeModal = () => {
+        setShowModal(false);
     }
 
     useEffect(() => {
@@ -57,7 +63,7 @@ function Header() {
                 </nav>
                 <div className={css.tools}>
                     <span className={css.search}>
-                        <button>
+                        <button onClick={() => setShowModal(true)}>
                             <SearchIcon />
                         </button>
                     </span>
@@ -100,6 +106,15 @@ function Header() {
                     </Sidebar>
                 </div>
             </div>
+            <Modal show={showModal} close={closeModal}>
+                <form className={css.form}>
+                    <div className={css.control}>
+                        <label htmlFor="recipe">Search Recipe:</label>
+                        <input type="text" id="recipe" placeholder="Enter recipe name here..." />
+                    </div>
+                    <button>Search</button>
+                </form>
+            </Modal>
         </header>
     )
 }
