@@ -12,6 +12,13 @@
   animation: rotate 1s linear infinite;
 }
 
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin: 20px 0;
+}
+
 @keyframes rotate {
   from {
     transform: rotate(0deg);
