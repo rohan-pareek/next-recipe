@@ -28,7 +28,10 @@ function RandomRecipePage() {
     return (
         <>
             {recipe
-                && <Recipe recipe={recipe} />
+                ? <Recipe recipe={recipe} />
+                : <div className={css.container}>
+                    <h2>Unable to fetch the Recipe. Try again.</h2>
+                </div>
             }
             {loading
                 && <div className={css.loader}><span className={css.icon}><LoaderIcon /></span></div>

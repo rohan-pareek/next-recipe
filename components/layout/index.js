@@ -1,11 +1,16 @@
+import Footer from "./footer";
 import Header from "./header";
+import css from './style.module.css';
 
 function Layout({ children }) {
     return (
-        <>
+        <div className={css.wrapper}>
             <Header />
-            {children}
-        </>
+            <main>
+                {children}
+            </main>
+            <Footer />
+        </div>
     )
 }
 

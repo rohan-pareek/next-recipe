@@ -1,3 +1,8 @@
+.container {
+  width: 70%;
+  margin: 0 auto;
+}
+
 .loader {
   display: flex;
   align-items: center;
@@ -18,5 +23,11 @@
   }
   to {
     transform: rotate(180deg);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 90%;
   }
 }

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import SearchIcon from "../../ui/icons/search";
 import MenuIcon from "../../ui/icons/menu";
@@ -10,9 +10,10 @@ import Modal from "../../modal";
 
 function Header() {
 
-    const { asPath } = useRouter();
+    const { asPath, push, pathname } = useRouter();
     const [showSidebar, setShowSidebar] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const searchInput = useRef();
 
     const closeSidebar = () => {
         setShowSidebar(false);
@@ -27,6 +28,13 @@ function Header() {
         setShowSidebar(false);
 
     }, [asPath]);
+
+    const searchHandler = (e) => {
+        e.preventDefault();
+        const searchParam = searchInput.current.value;
+        push(`/recipes?q=${searchParam}`);
+        closeModal();
+    }
 
     return (
         <header className={css.header}>
@@ -47,7 +55,7 @@ function Header() {
                         </li>
                         <li>
                             <Link href="/recipes">
-                                <a className={`${asPath === '/recipes' ? css['active-link'] : ''}`}>
+                                <a className={`${pathname === '/recipes' ? css['active-link'] : ''}`}>
                                     Browse All Recipes
                                 </a>
                             </Link>
@@ -115,9 +123,9 @@ function Header() {
                 <form className={css.form}>
                     <div className={css.control}>
                         <label htmlFor="recipe">Search Recipe:</label>
-                        <input type="text" id="recipe" placeholder="Enter recipe name here..." />
+                        <input type="text" id="recipe" placeholder="Enter recipe name here..." ref={searchInput} autoFocus />
                     </div>
-                    <button>Search</button>
+                    <button onClick={(e) => searchHandler(e)}>Search</button>
                 </form>
             </Modal>
         </header>

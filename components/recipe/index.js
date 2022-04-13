@@ -57,23 +57,23 @@ function Recipe({ recipe }) {
                 <div className={css.ingredients}>
                     <h2>Ingredients</h2>
                     <div>
-                        {recipe.extendedIngredients.map(ingredient => (
+                        {recipe.extendedIngredients.length > 0 ? recipe.extendedIngredients.map(ingredient => (
                             <div className={css.extendedIngredients} key={ingredient.id}>
                                 <span className={css.icon}><ChevronRightIcon /></span>
                                 {ingredient.original}
                             </div>
-                        ))}
+                        )) : <h3>Ingredients not available</h3>}
                     </div>
                 </div>
                 <div className={css.recipe}>
                     <h2>Recipe</h2>
                     <div>
-                        {recipe.analyzedInstructions[0].steps.map(instruction => (
+                        {recipe.analyzedInstructions.length > 0 ? recipe.analyzedInstructions[0].steps.map(instruction => (
                             <div className={css.steps} key={instruction.id}>
                                 <span className={css.icon}><ChevronRightIcon /></span>
                                 {instruction.step}
                             </div>
-                        ))}
+                        )) : <h3>Recipe not available</h3>}
                     </div>
                 </div>
             </div>

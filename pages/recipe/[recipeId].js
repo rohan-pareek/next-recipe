@@ -16,7 +16,7 @@ function RecipePage() {
 
     const fetchRecipe = async () => {
         setLoading(true);
-        const url = `/${recipeId}/information?`
+        const url = `${recipeId}/information?`
         const data = await request(url);
         if (!data.error) {
             setRecipe(data);
@@ -26,12 +26,15 @@ function RecipePage() {
 
     useEffect(() => {
         fetchRecipe();
-    }, [])
+    }, [recipeId])
 
     return (
         <>
             {recipe
-                && <Recipe recipe={recipe} />
+                ? <Recipe recipe={recipe} />
+                : <div className={css.container}>
+                    <h2>Unable to fetch the Recipe. Try again.</h2>
+                </div>
             }
             {loading
                 && <div className={css.loader}><span className={css.icon}><LoaderIcon /></span></div>

@@ -55,6 +55,11 @@
   margin-top: 0px;
 }
 
+.ingredients h3,
+.recipe h3 {
+  color: red;
+}
+
 .ingredients h2,
 .recipe h2 {
   text-transform: uppercase;

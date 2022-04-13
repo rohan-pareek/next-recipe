@@ -42,9 +42,10 @@ function HomePage() {
   return (
     <>
       <div className={css.container}>
-        {recipes
-          && recipes.length > 0
-          && <>
+        {(recipes
+          && recipes.length === 0 && !loading)
+          ? <h2>Unable to fetch Recipes. Try again.</h2>
+          : <>
             <Recipes recipes={recipes} />
             <div className={css.browseAllButton}>
               <Link href="/recipes" passHref>
